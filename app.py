@@ -4,7 +4,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "Hello, world!"
+    return "Home Page Text"
+
+@app.route('/create')
+def create():
+    return "Create Assessment Page Text"
 
 if __name__ == '__main__':
     app.run(debug=True)

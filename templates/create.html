@@ -1,0 +1,35 @@
+<form method="POST">
+    {{ form.hidden_tag() }}
+    
+    <div>
+        {{ form.title.label }}: {{ form.title() }}
+        {% if form.title.errors %}
+            <span>{{ form.title.errors[0] }}</span>
+        {% endif %}
+    </div>
+    
+    <div>
+        {{ form.module_code.label }}: {{ form.module_code() }}
+        {% if form.module_code.errors %}
+            <span>{{ form.module_code.errors[0] }}</span>
+        {% endif %}
+    </div>
+
+    <div>
+        {{ form.deadline.label }}: {{ form.deadline() }}
+        {% if form.deadline.errors %}
+            <span>{{ form.deadline.errors[0] }}</span>
+        {% endif %}
+    </div>
+
+    <div>
+        {{ form.description.label }}: {{ form.description() }}
+        {% if form.description.errors %}
+            <span>{{ form.description.errors[0] }}</span>
+        {% endif %}
+    </div>
+
+    <div>
+        {{ form.submit() }}
+    </div>
+</form>

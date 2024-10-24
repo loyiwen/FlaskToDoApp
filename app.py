@@ -1,6 +1,12 @@
 from flask import Flask
+from models import db
+from config import DevelopmentConfig
 
 app = Flask(__name__)
+app.config.from_object(DevelopmentConfig)
+
+# Initialise SQLAlchemy with app
+db.init_app(app)
 
 @app.route('/')
 def index():

@@ -1,5 +1,5 @@
+from datetime import datetime, date
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -20,8 +20,12 @@ class Assessment(db.Model):
     def deadline(self, value):
         """Setter for deadline that accepts both string and datetime object."""
         if isinstance(value, str):
-            self._deadline = datetime.strptime(value, '%Y-%m-%d')
-        elif isinstance(value, datetime):
+            try:
+                # Attempt to convert string to datetime
+                self._deadline = datetime.strptime(value, '%Y-%m-%d')
+            except ValueError:
+                raise ValueError("Invalid date format. Expected 'YYYY-MM-DD'.")
+        elif isinstance(value, (datetime, date)):
             self._deadline = value
         else:
             raise ValueError("Invalid format for deadline. Must be a string or datetime object.")

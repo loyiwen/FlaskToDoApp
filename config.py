@@ -3,21 +3,21 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
-    """Base Configuration Class"""
+    """Base configuration class"""
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 class DevelopmentConfig(Config):
-    """Development Configuration"""
+    """Development configuration"""
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'dev.db')
     DEBUG = True
 
 class TestingConfig(Config):
-    """Testing Configuration"""
+    """Testing configuration"""
     SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
     TESTING = True
     DEBUG = True
 
 class ProductionConfig(Config):
-    """Production Configuration"""
+    """Production configuration"""
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
     DEBUG = False

@@ -18,10 +18,10 @@ class Assessment(db.Model):
     
     @deadline.setter
     def deadline(self, value):
-        """Setter for deadline that accepts both string and datetime."""
+        """Setter for deadline that accepts both string and datetime object."""
         if isinstance(value, str):
             self._deadline = datetime.strptime(value, '%Y-%m-%d')
         elif isinstance(value, datetime):
             self._deadline = value
         else:
-            raise ValueError("Invalid format for deadline. Must be a string.")
+            raise ValueError("Invalid format for deadline. Must be a string or datetime object.")

@@ -1,10 +1,13 @@
 {% extends "base.html" %}
+
 {% block content %}
 <h2>All Assessments</h2>
 <ul>
     {% for assessment in assessments %}
     <li>
-        {{ assessment.title }} - {{ assessment.module_code }} - {{ assessment.deadline.strftime('%Y-%m-%d') }}
+        <strong>{{ assessment.title }}</strong> - {{ assessment.module_code }} - 
+        Due: {{ assessment.deadline.strftime('%Y-%m-%d') }} - 
+        {% if assessment.is_complete %}Completed{% else %}Not Completed{% endif %}
     </li>
     {% endfor %}
 </ul>

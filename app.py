@@ -5,9 +5,10 @@ from config import DevelopmentConfig
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
-
-# Initialise SQLAlchemy with app
 db.init_app(app)
+
+with app.app_context():
+    db.create_all()
 
 
 @app.route('/')
@@ -16,7 +17,7 @@ def index():
     return render_template('index.html', assessments=assessments)
 
 
-# Create new assessment (handle GET and POST requests)
+# Create new assessment
 @app.route('/create', methods=['GET', 'POST'])
 def create():
     form = AssessmentForm()
@@ -27,7 +28,7 @@ def create():
             print("Form validation failed. Errors:", form.errors)
             return render_template('create.html', form=form)
         
-        else:
+        try:
             new_assessment = Assessment(
                 title=form.title.data,
                 module_code=form.module_code.data,
@@ -36,13 +37,17 @@ def create():
                 is_complete=form.is_complete.data
             )
             db.session.add(new_assessment)
-            db.session.commit() 
+            db.session.commit()
             return redirect(url_for('index'))
+        
+        except Exception as e:
+            db.session.rollback()
+            print("Database commit failed:", e)
+            return render_template('create.html', form=form)
     else:
         # If GET request, just render the empty form
         return render_template('create.html', form=form)
+    
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)

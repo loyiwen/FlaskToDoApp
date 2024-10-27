@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>All Assessments</h2>
+<h2>{{ filter if filter else "All" }} Assessments</h2>
+{% if assessments %}
 <ul>
     {% for assessment in assessments %}
     <li>
         <strong>{{ assessment.title }}</strong> - {{ assessment.module_code }} - 
         Due: {{ assessment.deadline.strftime('%Y-%m-%d') }} - 
         {% if assessment.is_complete %}Completed{% else %}Not Completed{% endif %}
+        | <a href="{{ url_for('edit', id=assessment.id) }}">Edit</a>  <!-- Edit link added -->
     </li>
     {% endfor %}
 </ul>
+{% else %}
+<p>No assessments to show.</p>
+{% endif %}
 {% endblock %}

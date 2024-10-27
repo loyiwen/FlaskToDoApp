@@ -10,12 +10,10 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-
 @app.route('/')
 def index():
     assessments = Assessment.query.all()
     return render_template('index.html', assessments=assessments)
-
 
 # Create new assessment
 @app.route('/create', methods=['GET', 'POST'])
@@ -48,6 +46,20 @@ def create():
         # If GET request, just render the empty form
         return render_template('create.html', form=form)
     
+# Edit an existing assessment
+@app.route('/edit/<int:id>', methods=['GET', 'POST'])
+def edit(id):
+    assessment = Assessment.query.get_or_404(id)
+    form = AssessmentForm(obj=assessment)
+    if form.validate_on_submit():
+        assessment.title = form.title.data
+        assessment.module_code = form.module_code.data
+        assessment.deadline = form.deadline.data
+        assessment.description = form.description.data
+        assessment.is_complete = form.is_complete.data
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('edit.html', form=form, assessment=assessment)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Edit Assessment</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    
+    <div>
+        {{ form.title.label }}: 
+        {{ form.title(size=30) }}
+    </div>
+
+    <div>
+        {{ form.module_code.label }}: 
+        {{ form.module_code(size=30) }}
+    </div>
+
+    <div>
+        {{ form.deadline.label }}: 
+        {{ form.deadline() }}
+    </div>
+
+    <div>
+        {{ form.description.label }}: 
+        {{ form.description(rows=5, cols=30) }}
+    </div>
+
+    <div>
+        {{ form.is_complete.label }} 
+        {{ form.is_complete() }}
+    </div>
+
+    <button type="submit">{{ form.submit.label }}</button>
+</form>
+{% endblock %}

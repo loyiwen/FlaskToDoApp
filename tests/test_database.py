@@ -7,7 +7,7 @@ from datetime import datetime
 class DatabaseTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        # Set up the testing environment with TestingConfig
+        # Set up testing environment with TestingConfig
         app.config.from_object(TestingConfig)
         app.config['TESTING'] = True
 

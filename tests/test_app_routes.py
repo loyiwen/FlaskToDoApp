@@ -9,7 +9,7 @@ class AppRoutesTest(unittest.TestCase):
         app.config.from_object(TestingConfig)
         app.config['TESTING'] = True
 
-        # Initialise and create tables for testing
+        # Create database tables for testing
         with app.app_context():
             db.create_all()
             print("Database tables created in AppRoutesTest")

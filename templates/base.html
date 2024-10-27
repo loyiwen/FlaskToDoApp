@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Assessment Tracker</title>
+    <!-- Link to the CSS file in the static folder -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <header>
         <h1>Assessment Tracker</h1>
         <nav>
             <a href="{{ url_for('index') }}">Home</a> |
-            <a href="{{ url_for('create') }}">Add New</a>
+            <a href="{{ url_for('create') }}">Add Assessment</a> |
+            <a href="{{ url_for('completed') }}">View Completed</a> |
+            <a href="{{ url_for('uncomplete') }}">View Uncompleted</a>
         </nav>
     </header>
     <main>

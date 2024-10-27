@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Create New Assessment</h2>
 <form method="POST">
     {{ form.hidden_tag() }}
     
@@ -33,3 +36,4 @@
         {{ form.submit() }}
     </div>
 </form>
+{% endblock %}

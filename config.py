@@ -4,7 +4,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
     """Base configuration class"""
-    SQLALCHEMY_TRACK_MODIFICATIONS = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'a_secret_key'
 
 class DevelopmentConfig(Config):
@@ -15,8 +15,8 @@ class DevelopmentConfig(Config):
 class TestingConfig(Config):
     """Testing configuration"""
     SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
-    TESTING = True
     DEBUG = True
+    TESTING = True
     WTF_CSRF_ENABLED = False
 
 class ProductionConfig(Config):

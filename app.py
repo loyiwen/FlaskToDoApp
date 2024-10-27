@@ -61,5 +61,17 @@ def edit(id):
         return redirect(url_for('index'))
     return render_template('edit.html', form=form, assessment=assessment)
 
+# View only completed assessments
+@app.route('/completed')
+def completed():
+    assessments = Assessment.query.filter_by(is_complete=True).all()
+    return render_template('index.html', assessments=assessments, filter='Completed')
+
+# View only uncompleted assessments
+@app.route('/uncomplete')
+def uncomplete():
+    assessments = Assessment.query.filter_by(is_complete=False).all()
+    return render_template('index.html', assessments=assessments, filter='Uncompleted')
+
 if __name__ == '__main__':
     app.run(debug=True)

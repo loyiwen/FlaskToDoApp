@@ -3,22 +3,20 @@
 {% block content %}
 <h2>{{ filter if filter else "All" }} Assessments</h2>
 
-<!-- Filter Links -->
-<nav>
-    <a href="{{ url_for('index') }}">All</a> |
-    <a href="{{ url_for('completed') }}">Completed</a> |
-    <a href="{{ url_for('uncomplete') }}">Uncompleted</a>
-</nav>
-
-<!-- Assessments List -->
 {% if assessments %}
 <ul>
     {% for assessment in assessments %}
     <li>
-        <strong>{{ assessment.title }}</strong> - {{ assessment.module_code }} - 
-        Due: {{ assessment.deadline.strftime('%Y-%m-%d') }} - 
-        {% if assessment.is_complete %}Completed{% else %}Not Completed{% endif %}
-        | <a href="{{ url_for('edit', id=assessment.id) }}">Edit</a>
+        <div>
+            <strong>{{ assessment.title }}</strong> - {{ assessment.module_code }}<br>
+            Due: {{ assessment.deadline.strftime('%Y-%m-%d') }}
+            <span class="status {{ 'complete' if assessment.is_complete else 'incomplete' }}">
+                {% if assessment.is_complete %}✓ Completed{% else %}✗ Not Completed{% endif %}
+            </span>
+        </div>
+        <div>
+            <a class="button-link" href="{{ url_for('edit', id=assessment.id) }}">Edit</a>
+        </div>
     </li>
     {% endfor %}
 </ul>

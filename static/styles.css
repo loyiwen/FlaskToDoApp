@@ -74,7 +74,8 @@ footer {
     text-align: center;
 }
 
-u/* Table styling for assessment layout */
+
+/* Table styling for assessment layout */
 .assessment-table {
     width: 100%;
     border-collapse: collapse;
@@ -83,50 +84,79 @@ u/* Table styling for assessment layout */
 
 .assessment-table th, .assessment-table td {
     padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #e8f0fe;
 }
 
 .assessment-table th {
-    background-color: #f1f1f1;
+    background-color: #e8f0fe;
+    color: #333;
     font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
 }
 
 .assessment-table tr:hover {
     background-color: #f9f9f9;
 }
 
+/* Column width ratios (1:2:5:1:1:1) */
+.assessment-table th:nth-child(2),
+.assessment-table td:nth-child(2) {
+    width: 10%; /* Module Code */
+}
+.assessment-table th:nth-child(3),
+.assessment-table td:nth-child(3) {
+    width: 20%; /* Assessment Name */
+}
+.assessment-table th:nth-child(4),
+.assessment-table td:nth-child(4) {
+    width: 50%; /* Description */
+}
+.assessment-table th:nth-child(5),
+.assessment-table td:nth-child(5) {
+    width: 10%; /* Deadline */
+    text-align: center;
+}
+.assessment-table th:nth-child(6),
+.assessment-table td:nth-child(6) {
+    width: 10%; /* Status */
+    text-align: center;
+}
+.assessment-table th:nth-child(7),
+.assessment-table td:nth-child(7) {
+    width: 80px; /* Actions column for Edit/Delete buttons */
+}
+
+/* Checkbox styling */
 .assessment-table td:first-child {
     width: 40px;
     text-align: center;
 }
 
-/* Status indicators for complete/incomplete */
-.status.complete {
-    color: green;
-}
-
-.status.incomplete {
-    color: red;
-}
-
-/* Checkbox styling */
 .assessment-table input[type="checkbox"] {
     cursor: pointer;
     transform: scale(1.2);
 }
 
-/* Button styling for actions */
+/* New column for action buttons */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+/* Button styling */
 .button-link, .delete-button {
     background-color: #0056b3;
     color: white;
     border: none;
     padding: 0.3rem 0.8rem;
-    margin-left: 8px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.9rem;
     text-decoration: none;
+    /* Remove width: 100% to prevent buttons from expanding */
 }
 
 .button-link:hover, .delete-button:hover {
@@ -141,4 +171,12 @@ u/* Table styling for assessment layout */
     background-color: #800000;
 }
 
-
+/* Full-width content area */
+main {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}

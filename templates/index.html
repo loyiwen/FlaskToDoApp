@@ -13,6 +13,7 @@
             <th>Description</th>
             <th>Deadline</th>
             <th>Status</th>
+            <th></th> <!-- Checkbox column -->
         </tr>
     </thead>
     <tbody>
@@ -26,11 +27,13 @@
             <td>{{ assessment.module_code }}</td>
             <td>{{ assessment.title }}</td>
             <td>{{ assessment.description }}</td>
-            <td>{{ assessment.deadline.strftime('%Y-%m-%d %H:%M') }}</td> <!-- Updated to show both date and time -->
+            <td>{{ assessment.deadline.strftime('%Y-%m-%d %H:%M') }}</td>
             <td>
                 <span class="status {{ 'complete' if assessment.is_complete else 'incomplete' }}">
                     {% if assessment.is_complete %}✓ Completed{% else %}✗ Not Completed{% endif %}
                 </span>
+            </td>
+            <td class="action-buttons">
                 <a class="button-link" href="{{ url_for('edit', id=assessment.id) }}">Edit</a>
                 <form action="{{ url_for('delete_assessment', id=assessment.id) }}" method="post" style="display:inline;">
                     <button type="submit" class="delete-button" onclick="return confirm('Are you sure you want to delete this assessment?');">Delete</button>

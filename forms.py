@@ -9,3 +9,4 @@ class AssessmentForm(FlaskForm):
     time = TimeField('Deadline Time', format='%H:%M', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired()])
     submit = SubmitField('Save')
+    

@@ -30,15 +30,18 @@ def create():
         try:
             # Combine date and time fields
             deadline = datetime.combine(form.date.data, form.time.data)
+            
             new_assessment = Assessment(
                 title=form.title.data,
                 module_code=form.module_code.data,
-                deadline=form.deadline.data,
+                deadline=deadline,
                 description=form.description.data,
                 is_complete=False
             )
+            
             db.session.add(new_assessment)
             db.session.commit()
+
             return redirect(url_for('index'))
         
         except Exception as e:

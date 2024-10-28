@@ -2,6 +2,7 @@ from flask import Flask, redirect, render_template, url_for, request
 from models import db, Assessment
 from forms import AssessmentForm
 from config import DevelopmentConfig
+from datetime import datetime
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
@@ -27,6 +28,8 @@ def create():
             return render_template('create.html', form=form)
         
         try:
+            # Combine date and time fields
+            deadline = datetime.combine(form.date.data, form.time.data)
             new_assessment = Assessment(
                 title=form.title.data,
                 module_code=form.module_code.data,
@@ -51,13 +54,21 @@ def create():
 def edit(id):
     assessment = Assessment.query.get_or_404(id)
     form = AssessmentForm(obj=assessment)
+
+    # Pre-fill the form with existing date and time
+    if request.method == 'GET':
+        form.date.data = assessment.deadline.date()
+        form.time.data = assessment.deadline.time()
+
     if form.validate_on_submit():
         assessment.title = form.title.data
         assessment.module_code = form.module_code.data
-        assessment.deadline = form.deadline.data
+        # Combine the date and time fields
+        assessment.deadline = datetime.combine(form.date.data, form.time.data)
         assessment.description = form.description.data
         db.session.commit()
         return redirect(url_for('index'))
+    
     return render_template('edit.html', form=form, assessment=assessment)
 
 # Delete an assessment

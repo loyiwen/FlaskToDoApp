@@ -16,8 +16,13 @@
     </div>
 
     <div>
-        {{ form.deadline.label }}: 
-        {{ form.deadline(value=assessment.deadline.strftime('%Y-%m-%d')) }}
+        {{ form.date.label }}:
+        {{ form.date() }}
+    </div>
+    
+    <div>
+        {{ form.time.label }}:
+        {{ form.time() }}
     </div>
 
     <div>

@@ -18,14 +18,14 @@ class Assessment(db.Model):
     
     @deadline.setter
     def deadline(self, value):
-        """Setter for deadline that accepts both string and datetime object."""
+        """Setter for deadline that accepts string with date and time, or datetime object."""
         if isinstance(value, str):
             try:
-                # Attempt to convert string to datetime
-                self._deadline = datetime.strptime(value, '%Y-%m-%d')
+                # Attempt to convert string to datetime with date and time
+                self._deadline = datetime.strptime(value, '%Y-%m-%d %H:%M')
             except ValueError:
-                raise ValueError("Invalid date format. Expected 'YYYY-MM-DD'.")
+                raise ValueError("Invalid date format. Expected 'YYYY-MM-DD HH:MM'.")
         elif isinstance(value, (datetime, date)):
             self._deadline = value
         else:
-            raise ValueError("Invalid format for deadline. Must be a string or datetime object.")
+            raise ValueError("Invalid format for deadline. Must be a string with 'YYYY-MM-DD HH:MM' or datetime object.")

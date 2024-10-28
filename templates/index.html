@@ -9,7 +9,7 @@
     <li>
         <div>
             <strong>{{ assessment.title }}</strong> - {{ assessment.module_code }}<br>
-            Due: {{ assessment.deadline.strftime('%Y-%m-%d') }}
+            Due: <td>{{ assessment.deadline.strftime('%Y-%m-%d %H:%M') }}</td>
             <span class="status {{ 'complete' if assessment.is_complete else 'incomplete' }}">
                 {% if assessment.is_complete %}✓ Completed{% else %}✗ Not Completed{% endif %}
             </span>

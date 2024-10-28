@@ -96,6 +96,24 @@ ul li:hover {
     background-color: #d0e1ff;
 }
 
+/* Action buttons styling */
+.actions {
+    float: right;
+}
+
+.actions form, .actions a {
+    display: inline;
+}
+
+/* Status indicators for complete/incomplete */
+.status.complete {
+    color: green;
+}
+
+.status.incomplete {
+    color: red;
+}
+
 button, .button-link {
     background-color: #0056b3;
     color: white;
@@ -111,3 +129,4 @@ button, .button-link {
 button:hover, .button-link:hover, button:focus, .button-link:focus {
     background-color: #003f7f;
 }
+

@@ -25,11 +25,6 @@
         {{ form.description(rows=5, cols=30) }}
     </div>
 
-    <div>
-        {{ form.is_complete.label }} 
-        {{ form.is_complete() }}
-    </div>
-
     <button type="submit">{{ form.submit.label }}</button>
 </form>
 {% endblock %}

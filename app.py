@@ -32,7 +32,7 @@ def create():
                 module_code=form.module_code.data,
                 deadline=form.deadline.data,
                 description=form.description.data,
-                is_complete=form.is_complete.data
+                is_complete=False
             )
             db.session.add(new_assessment)
             db.session.commit()
@@ -56,10 +56,25 @@ def edit(id):
         assessment.module_code = form.module_code.data
         assessment.deadline = form.deadline.data
         assessment.description = form.description.data
-        assessment.is_complete = form.is_complete.data
         db.session.commit()
         return redirect(url_for('index'))
     return render_template('edit.html', form=form, assessment=assessment)
+
+# Delete an assessment
+@app.route('/delete/<int:id>', methods=['POST'])
+def delete_assessment(id):
+    assessment = Assessment.query.get_or_404(id)
+    db.session.delete(assessment)
+    db.session.commit()
+    return redirect(url_for('index'))
+
+# Toggle completion status
+@app.route('/toggle_complete/<int:id>', methods=['POST'])
+def toggle_completion(id):
+    assessment = Assessment.query.get_or_404(id)
+    assessment.is_complete = not assessment.is_complete
+    db.session.commit()
+    return redirect(url_for('index'))
 
 # View only completed assessments
 @app.route('/completed')

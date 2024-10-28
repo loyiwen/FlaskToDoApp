@@ -74,35 +74,31 @@ footer {
     text-align: center;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+u/* Table styling for assessment layout */
+.assessment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-ul li {
-    background-color: #e8f0fe;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.2s ease;
+.assessment-table th, .assessment-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
-ul li:hover {
-    background-color: #d0e1ff;
+.assessment-table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
 }
 
-/* Action buttons styling */
-.actions {
-    float: right;
+.assessment-table tr:hover {
+    background-color: #f9f9f9;
 }
 
-.actions form, .actions a {
-    display: inline;
+.assessment-table td:first-child {
+    width: 40px;
+    text-align: center;
 }
 
 /* Status indicators for complete/incomplete */
@@ -114,19 +110,35 @@ ul li:hover {
     color: red;
 }
 
-button, .button-link {
+/* Checkbox styling */
+.assessment-table input[type="checkbox"] {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+/* Button styling for actions */
+.button-link, .delete-button {
     background-color: #0056b3;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 0.8rem;
+    margin-left: 8px;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 0.9rem;
     text-decoration: none;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
 }
 
-button:hover, .button-link:hover, button:focus, .button-link:focus {
+.button-link:hover, .delete-button:hover {
     background-color: #003f7f;
 }
+
+.delete-button {
+    background-color: #b30000;
+}
+
+.delete-button:hover {
+    background-color: #800000;
+}
+
 

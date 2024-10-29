@@ -30,7 +30,7 @@
             <td>{{ assessment.deadline.strftime('%Y-%m-%d %H:%M') }}</td>
             <td>
                 <span class="status {{ 'complete' if assessment.is_complete else 'incomplete' }}">
-                    {% if assessment.is_complete %}✓ Completed{% else %}✗ Not Completed{% endif %}
+                    {% if assessment.is_complete %}Completed{% else %}Not Completed{% endif %}
                 </span>
             </td>
             <td class="action-buttons">

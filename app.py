@@ -1,11 +1,17 @@
+import os
 from flask import Flask, redirect, render_template, url_for, request
 from models import db, Assessment
 from forms import AssessmentForm
-from config import DevelopmentConfig
+from config import DevelopmentConfig, TestingConfig, ProductionConfig
 from datetime import datetime
 
 app = Flask(__name__)
-app.config.from_object(DevelopmentConfig)
+
+if os.getenv("FLASK_ENV") == "testing" or os.getenv("TESTING") == "1":
+    app.config.from_object(TestingConfig)
+else:
+    app.config.from_object(DevelopmentConfig)
+
 db.init_app(app)
 
 with app.app_context():

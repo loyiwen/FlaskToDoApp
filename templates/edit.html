@@ -1,35 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Edit Assessment</h2>
-<form method="POST">
-    {{ form.hidden_tag() }}
-    
-    <div>
-        {{ form.title.label }}: 
-        {{ form.title(value=assessment.title, size=30) }}
-    </div>
+<div class="centered-card">
+    <h2>Edit Assessment</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-group">
+            {{ form.title.label }}
+            {{ form.title(size=30) }}
+        </div>
 
-    <div>
-        {{ form.module_code.label }}: 
-        {{ form.module_code(value=assessment.module_code, size=30) }}
-    </div>
+        <div class="form-group">
+            {{ form.module_code.label }}
+            {{ form.module_code(size=30) }}
+        </div>
 
-    <div>
-        {{ form.date.label }}:
-        {{ form.date() }}
-    </div>
-    
-    <div>
-        {{ form.time.label }}:
-        {{ form.time() }}
-    </div>
+        <div class="form-group">
+            {{ form.date.label }}
+            {{ form.date() }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.time.label }}
+            {{ form.time() }}
+        </div>
 
-    <div>
-        {{ form.description.label }}: 
-        {{ form.description(value=assessment.description, rows=5, cols=30) }}
-    </div>
+        <div class="form-group">
+            {{ form.description.label }}
+            {{ form.description(rows=5, cols=30) }}
+        </div>
 
-    <button type="submit">{{ form.submit.label }}</button>
-</form>
+        <button type="submit" class="submit-button">{{ form.submit.label }}</button>
+    </form>
+</div>
 {% endblock %}

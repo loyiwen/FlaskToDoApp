@@ -1,0 +1,106 @@
+/* layout.css */
+main {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.content {
+    padding: 1rem;
+}
+
+/* Table Styling */
+.assessment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.assessment-table th, .assessment-table td {
+    padding: 10px;
+    border: 1px solid #e8f0fe;
+}
+
+.assessment-table th {
+    background-color: #e8f0fe;
+    color: #333;
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.assessment-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Column Width Ratios */
+.assessment-table th:nth-child(1), .assessment-table td:nth-child(1) {
+    width: 40px;
+}
+
+.assessment-table th:nth-child(2), .assessment-table td:nth-child(2) {
+    width: 10%;
+}
+
+.assessment-table th:nth-child(3), .assessment-table td:nth-child(3) {
+    width: 20%;
+}
+
+.assessment-table th:nth-child(4), .assessment-table td:nth-child(4) {
+    width: 50%;
+}
+
+.assessment-table th:nth-child(5), .assessment-table td:nth-child(5) {
+    width: 10%;
+    text-align: center;
+}
+
+.assessment-table th:nth-child(6), .assessment-table td:nth-child(6) {
+    width: 10%;
+    text-align: center;
+}
+
+.assessment-table th:nth-child(7), .assessment-table td:nth-child(7) {
+    width: 80px;
+    text-align: center;
+}
+
+.assessment-table input[type="checkbox"] {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+/* Centered Card Styling for Create/Edit Assessment */
+.centered-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    margin: 5% auto; /* Centers the card on the page */
+    text-align: center;
+}
+
+/* Assessment Form Styling */
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"], input[type="date"], input[type="time"], textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}

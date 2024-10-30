@@ -7,13 +7,13 @@
 <table class="assessment-table">
     <thead>
         <tr>
-            <th></th> <!-- Checkbox column -->
+            <th></th> <!-- Checkbox -->
             <th>Module Code</th>
             <th>Assessment Name</th>
             <th>Description</th>
             <th>Deadline</th>
             <th>Status</th>
-            <th></th> <!-- Checkbox column -->
+            <th></th> <!-- Edit/Delete -->
         </tr>
     </thead>
     <tbody>
@@ -43,7 +43,9 @@
         {% endfor %}
     </tbody>
 </table>
+
 {% else %}
 <p>No assessments to show.</p>
+
 {% endif %}
 {% endblock %}

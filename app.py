@@ -10,7 +10,7 @@ app = Flask(__name__)
 if os.getenv("FLASK_ENV") == "testing" or os.getenv("TESTING") == "1":
     app.config.from_object(TestingConfig)
 else:
-    app.config.from_object(DevelopmentConfig)
+    app.config.from_object(ProductionConfig)
 
 db.init_app(app)
 
@@ -32,8 +32,13 @@ def create():
         if not form.validate_on_submit():
             flash("Form validation failed. Please correct the errors and try again.", "danger")
             return render_template('create.html', form=form)
-        
-        try:
+
+        # Check if date and time fields are fully populated
+        if not form.date.data or not form.time.data:
+            flash("Please enter a complete date and time.", "danger")
+            return render_template('create.html', form=form)
+
+        try:         
             # Combine date and time fields
             deadline = datetime.combine(form.date.data, form.time.data)
             
@@ -70,6 +75,11 @@ def edit(id):
         form.time.data = assessment.deadline.time()
 
     if form.validate_on_submit():
+        # Check if date and time fields are fully populated
+        if not form.date.data or not form.time.data:
+            flash("Please enter a complete date and time.", "danger")
+            return render_template('create.html', form=form)
+        
         assessment.title = form.title.data
         assessment.module_code = form.module_code.data
         # Combine the date and time fields

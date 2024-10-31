@@ -14,8 +14,8 @@ main {
 
 /* Table Styling */
 .table-wrapper {
-    overflow-x: auto; /* Enables Horizontal Scrolling */
-    -webkit-overflow-scrolling: touch; /* Smooth Scrolling on iOS */
+    overflow-x: auto; /* enables horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on ios */
 }
 
 .assessment-table {
@@ -100,7 +100,7 @@ main {
     width: 90%;
     max-width: 500px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    margin: 5% auto; /* Centers the card on the page */
+    margin: 5% auto; /* centers the card on the page */
     text-align: center;
 }
 

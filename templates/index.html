@@ -21,8 +21,11 @@
             {% for assessment in assessments %}
             <tr>
                 <td>
-                    <form action="{{ url_for('toggle_completion', id=assessment.id) }}" method="post">
-                        <input type="checkbox" onclick="this.form.submit()" {% if assessment.is_complete %}checked{% endif %}>
+                    <form action="{{ url_for('toggle_completion', id=assessment.id) }}" method="post" id="completion-form-{{ assessment.id }}">
+                        <span class="material-icons checkbox-icon" 
+                              onclick="toggleCheckbox(this, {{ assessment.id }})">
+                            {% if assessment.is_complete %}check_box{% else %}check_box_outline_blank{% endif %}
+                        </span>
                     </form>
                 </td>
                 <td>{{ assessment.module_code }}</td>
@@ -49,7 +52,6 @@
     </table>
 </div>
 {% else %}
-<p>No assessments to show.</p>
 {% endif %}
 
 {% endblock %}

@@ -22,6 +22,10 @@ textarea {
     color: #003f7f;
 }
 
+.checkbox-icon {
+    cursor: pointer;
+}
+
 /* Centered Card Styling */
 .centered-card {
     background: #ffffff;

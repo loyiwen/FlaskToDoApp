@@ -92,12 +92,6 @@ main {
     width: 80px;
 }
 
-.assessment-table input[type="checkbox"] {
-    cursor: pointer;
-    transform: scale(1.2);
-    align-content: center;
-}
-
 /* Centered Card Styling for Create/Edit Assessment */
 .centered-card {
     background: #ffffff;

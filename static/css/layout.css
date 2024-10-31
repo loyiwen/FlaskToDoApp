@@ -44,14 +44,20 @@ main {
 
 .assessment-table th:nth-child(2), .assessment-table td:nth-child(2) {
     width: 10%;
+    white-space: normal;
+    overflow-wrap: break-word;
 }
 
 .assessment-table th:nth-child(3), .assessment-table td:nth-child(3) {
     width: 20%;
+    white-space: normal;
+    overflow-wrap: break-word;
 }
 
 .assessment-table th:nth-child(4), .assessment-table td:nth-child(4) {
     width: 50%;
+    white-space: normal;
+    overflow-wrap: break-word;
 }
 
 .assessment-table th:nth-child(5), .assessment-table td:nth-child(5) {

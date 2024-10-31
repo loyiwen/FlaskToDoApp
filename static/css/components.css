@@ -4,33 +4,22 @@ textarea {
 }
 
 .action-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    align-items: center;
+    display: block;
+    gap: 10px;
+    height: 100%;
+    margin:auto;
 }
 
-.button-link, .delete-button {
-    background-color: #0056b3;
-    color: white;
-    border: none;
-    padding: 0.3rem 0.8rem;
-    border-radius: 4px;
+.icon-button {
+    color: #0056b3;
+    font-size: 1.2rem;
     cursor: pointer;
-    font-size: 0.9rem;
     text-decoration: none;
+    vertical-align: middle;
 }
 
-.button-link:hover, .delete-button:hover {
-    background-color: #003f7f;
-}
-
-.delete-button {
-    background-color: #b30000;
-}
-
-.delete-button:hover {
-    background-color: #800000;
+.icon-button:hover {
+    color: #003f7f;
 }
 
 /* Centered Card Styling */

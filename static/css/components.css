@@ -1,4 +1,8 @@
 /* components.css */
+textarea {
+    resize: vertical;
+}
+
 .action-buttons {
     display: flex;
     flex-direction: column;

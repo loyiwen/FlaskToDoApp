@@ -3,21 +3,27 @@ textarea {
     resize: vertical;
 }
 
-/* Flash Message tyling */
+/* Flash Message Styling */
 .flash-messages {
     position: fixed;
     top: 10px;
     right: 10px;
     z-index: 1000;
-    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
 }
 
 .alert {
-    padding: 10px;
+    padding: 10px 20px;
     margin-bottom: 10px;
     border-radius: 5px;
     color: white;
     font-weight: bold;
+    display: inline-block;
+    opacity: 1;
+    transition: opacity 1s ease;
 }
 
 .alert-success {

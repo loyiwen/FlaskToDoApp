@@ -78,3 +78,11 @@ input[type="text"], input[type="date"], input[type="time"], textarea {
 .submit-button:hover {
     background-color: #003f7f;
 }
+
+/* Styling for No Assessments Message */
+.no-assessments-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 20px;
+}

@@ -23,7 +23,8 @@
                 <td>
                     <form action="{{ url_for('toggle_completion', id=assessment.id) }}" method="post" id="completion-form-{{ assessment.id }}">
                         <span class="material-icons checkbox-icon" 
-                              onclick="toggleCheckbox(this, {{ assessment.id }})">
+                              onclick="toggleCheckbox(this, {{ assessment.id }})"
+                              aria-label="Toggle Completion Status">
                             {% if assessment.is_complete %}check_box{% else %}check_box_outline_blank{% endif %}
                         </span>
                     </form>
@@ -38,12 +39,14 @@
                     </span>
                 </td>
                 <td class="action-buttons">
-                    <a href="{{ url_for('edit', id=assessment.id) }}" class="icon-button" title="Edit">
+                    <a href="{{ url_for('edit', id=assessment.id) }}" class="icon-button" title="Edit" aria-label="Edit Assessment">
                         <span class="material-icons">edit</span>
                     </a>
-                    <a href="{{ url_for('delete_assessment', id=assessment.id) }}" class="icon-button" title="Delete" onclick="return confirm('Are you sure you want to delete this assessment?');">
-                        <span class="material-icons">delete</span>
-                    </a>
+                    <form action="{{ url_for('delete_assessment', id=assessment.id) }}" method="POST" style="display: inline;">
+                        <button type="submit" class="icon-button" onclick="return confirm('Are you sure you want to delete this assessment?');">
+                            <span class="material-icons">delete</span>
+                        </button>
+                    </form>
                 </td>
             </tr>
             {% endfor %}

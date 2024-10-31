@@ -33,3 +33,15 @@ nav a:hover, nav a:focus {
     background-color: white;
     color: #0056b3;
 }
+
+@media (max-width: 706px) {
+    nav {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    nav a {
+        width: 100%;
+        text-align: center;
+    }
+}

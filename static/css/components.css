@@ -11,6 +11,8 @@ textarea {
 }
 
 .icon-button {
+    background: none;
+    border: none;
     color: #0056b3;
     font-size: 1.2rem;
     cursor: pointer;
@@ -19,7 +21,12 @@ textarea {
 }
 
 .icon-button:hover {
-    color: #003f7f;
+    color: #002f5e;
+}
+
+.icon-button:focus {
+    outline: 2px solid #afb0bd; /* grey focus outline */
+    outline-offset: 2px;
 }
 
 .checkbox-icon {

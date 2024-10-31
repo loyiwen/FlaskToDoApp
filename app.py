@@ -1,5 +1,5 @@
 import os
-from flask import Flask, redirect, render_template, url_for, request
+from flask import Flask, redirect, render_template, url_for, request, flash
 from models import db, Assessment
 from forms import AssessmentForm
 from config import DevelopmentConfig, TestingConfig, ProductionConfig
@@ -30,7 +30,7 @@ def create():
     if request.method == 'POST':
         # If form validation fails, log errors and return the form with errors
         if not form.validate_on_submit():
-            print("Form validation failed. Errors:", form.errors)
+            flash("Form validation failed. Please correct the errors and try again.", "danger")
             return render_template('create.html', form=form)
         
         try:
@@ -47,7 +47,7 @@ def create():
             
             db.session.add(new_assessment)
             db.session.commit()
-
+            flash("Assessment created successfully.", "success")
             return redirect(url_for('index'))
         
         except Exception as e:
@@ -76,6 +76,7 @@ def edit(id):
         assessment.deadline = datetime.combine(form.date.data, form.time.data)
         assessment.description = form.description.data
         db.session.commit()
+        flash("Assessment updated successfully.", "success")
         return redirect(url_for('index'))
     
     return render_template('edit.html', form=form, assessment=assessment)
@@ -86,6 +87,7 @@ def delete_assessment(id):
     assessment = Assessment.query.get_or_404(id)
     db.session.delete(assessment)
     db.session.commit()
+    flash("Assessment deleted successfully.", "success")
     return redirect(url_for('index'))
 
 # Toggle completion status
@@ -94,6 +96,8 @@ def toggle_completion(id):
     assessment = Assessment.query.get_or_404(id)
     assessment.is_complete = not assessment.is_complete
     db.session.commit()
+    status = "completed" if assessment.is_complete else "marked as incomplete"
+    flash(f"Assessment {status}.", "info")
     return redirect(url_for('index'))
 
 # View only completed assessments
